@@ -2,4 +2,12 @@
 
 {% block contenido_base %}
 
+    {% for articulo in object_list %}
+
+        {{articulo.titulo}}
+        {{articulo.fecha}}
+        {{articulo.autor}}
+
+    {% endfor %}
+
 {% endblock contenido_base %}
