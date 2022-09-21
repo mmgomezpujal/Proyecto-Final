@@ -1,0 +1,13 @@
+{% extends 'BlogApp/plantilla_base.html' %}
+
+{% block contenido_base %}
+
+<p>Titulo: {{object.titulo}}</p>
+<p>Fecha: {{object.fecha}}</p>
+<p>Autor: {{object.autor}}</p>
+<p>Contacto: {{object.email_autor}}</p>
+<p>
+    <a href="{% url 'Articulos' %}"> Regresar </a>
+</p>
+
+{% endblock contenido_base %}

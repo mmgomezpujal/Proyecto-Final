@@ -6,5 +6,5 @@ urlpatterns = [
     path('pages/', views.ListaArticulos.as_view(), name='Articulos'),
     path('', views.home, name='Inicio'),
     path('about/', views.about, name='Acerca de'),
-    # path('pages/', views.pages, name='Articulos'),   
+    path(r'^(?P<pk>/d+)$', views.DetalleArticulos.as_view(), name="Detail"),
 ]
