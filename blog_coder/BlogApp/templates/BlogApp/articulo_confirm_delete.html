@@ -1,0 +1,11 @@
+{% extends 'BlogApp/plantilla_base.html' %}
+
+{% block contenido_base %}
+
+<form method="POST">
+    {% csrf_token %}
+    ¿Estás seguro que quieres eliminar el artículo "{{object.titulo}}"?
+    <input type="submit" value="Confirmar"/>
+</form>
+
+{% endblock contenido_base %}
