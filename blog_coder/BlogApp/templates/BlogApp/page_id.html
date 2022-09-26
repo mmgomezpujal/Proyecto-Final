@@ -3,9 +3,11 @@
 {% block contenido_base %}
 
 <p>Titulo: {{object.titulo}}</p>
+<p>Titulo: {{object.subtitulo}}</p>
 <p>Fecha: {{object.fecha}}</p>
 <p>Autor: {{object.autor}}</p>
-<p>Contacto: {{object.email_autor}}</p>
+<p>Contacto: {{object.email_autor}}
+<p> {{object.cuerpo|safe}} </p>
 <p>
     <a href="{% url 'Articulos' %}"> Regresar </a>
 </p>
