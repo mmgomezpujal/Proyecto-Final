@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 from BlogApp.models import*
 
 def home(request):
@@ -30,16 +32,17 @@ class DetalleArticulos(DetailView):
 class CrearArticulo(CreateView):
     model = Articulo
     success_url = "/BlogApp/pages"
-    fields = ['titulo', 'subtitulo', 'fecha', 'autor', 'email_autor', 'cuerpo', 'imagen']
+    fields = ['titulo', 'subtitulo', 'fecha', 'autor', 'email_autor', 'cuerpo']
 
 
 class EditarArticulo(UpdateView):
     model = Articulo
     success_url = "/BlogApp/pages"
-    fields = ['titulo', 'subtitulo', 'fecha', 'autor', 'email_autor', 'cuerpo', 'imagen']
+    fields = ['titulo', 'subtitulo', 'fecha', 'autor', 'email_autor', 'cuerpo']
 
 
 class EliminarArticulo(DeleteView): 
     model = Articulo
     success_url = "/BlogApp/pages"
+
 # Create your views here.
