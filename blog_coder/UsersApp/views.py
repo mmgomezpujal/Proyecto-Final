@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from UsersApp.forms import UserRegisterForm
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth import login, authenticate
+
 
 
 def login_request(request):
@@ -34,7 +37,7 @@ def register(request):
     
     if request.method == 'POST':
 
-        form_1 = UserCreationForm(request.POST)
+        form_1 = UserRegisterForm(request.POST)
 
         if form_1.is_valid():
 
@@ -43,8 +46,12 @@ def register(request):
             return render(request, "BlogApp/home.html", {"mensaje":"Usuario Creado"})
     
     else: 
-        form_1=UserCreationForm()
+        form_1=UserRegisterForm()
 
     return render(request, "UsersApp/registro.html", {"form_1":form_1})
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'UsersApp/logout.html'
 
 # Create your views here.

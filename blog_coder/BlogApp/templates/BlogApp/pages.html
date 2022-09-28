@@ -17,6 +17,9 @@
             <strong>Autor</strong>
           </th>
           <th>
+            <strong>Resumen</strong>
+          </th>
+          <th>
             <strong>Ver Detalle</strong>
           </th>
           <th>
@@ -33,14 +36,16 @@
             <td>{{articulo.titulo}}</td>
             <td>{{articulo.fecha}}</td>
             <td>{{articulo.autor}}</td>
+            <td>{{articulo.cuerpo|slice:":200"|safe}}</td> 
 
             <td><a href="{% url 'Detalle' articulo.id %}"> Leer más</a></td>
             <td><a href="{% url 'Editar' articulo.id %}"> Editar</a></td>
             <td><a href="{% url 'Eliminar' articulo.id %}"> Eliminar</a></td>
 
         </tr>
-
+    
     {% endfor %}
+  
   </tbody>
 </table>
 
