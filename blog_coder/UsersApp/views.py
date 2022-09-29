@@ -3,7 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from UsersApp.forms import UserRegisterForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
-
+from django.contrib.auth.decorators import login_required
+from UsersApp.forms import UserEditForm
 
 
 def login_request(request):
@@ -53,5 +54,29 @@ def register(request):
 
 class CustomLogoutView(LogoutView):
     template_name = 'UsersApp/logout.html'
+
+
+@login_required
+def EditarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+        miFormulario = UserEditForm(request.POST)
+        if miFormulario.is_valid():
+            
+            informacion = miFormulario.cleaned_data
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.save()
+
+            return render(request, "BlogApp/home.html", {"mensaje": "La información se ha modificado con éxito"})
+    
+    else: 
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+
+    return render(request, "UsersApp/editar_perfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
 # Create your views here.
