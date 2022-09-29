@@ -33,7 +33,7 @@ class DetalleArticulos(DetailView):
 class CrearArticulo(LoginRequiredMixin, CreateView):
     model = Articulo
     success_url = reverse_lazy('Articulos')
-    fields = ['titulo', 'subtitulo', 'fecha', 'autor', 'email_autor', 'cuerpo']
+    fields = ['titulo', 'subtitulo', 'fecha', 'autor', 'email_autor', 'cuerpo', 'imagen']
 
 
 class EditarArticulo(LoginRequiredMixin, UpdateView):

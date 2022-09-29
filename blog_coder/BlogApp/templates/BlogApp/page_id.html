@@ -8,6 +8,11 @@
 <p>Autor: {{object.autor}}</p>
 <p>Contacto: {{object.email_autor}}
 <p> {{object.cuerpo|safe}} </p>
+
+<br>
+{% if object.imagen %}
+<img src="{{object.imagen}}">
+{%endif%}
 <p>
     <a href="{% url 'Articulos' %}"> Regresar </a>
 </p>
